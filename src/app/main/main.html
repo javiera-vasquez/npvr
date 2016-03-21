@@ -1,0 +1,31 @@
+<div class="container">
+
+  <section class="header">
+    <h4>Ahora: {{ main.rightNow }} <span class="glyphicon glyphicon-repeat"></span></h4>
+    <img class="logo absolute" ng-src="assets/images/{{ main.channel }}.png">
+  </section>
+
+  <section class="navigation-content">
+    <div class="row">
+      <div class="col-lg-10">
+        <ul class="list-inline">
+          <li>
+            <a href ur-sref="channel">
+              <span class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          <li ng-repeat="menu in main.menuList" >
+            <a href ur-sref="">{{ menu | uppercase }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2">
+        <img class="logo absolute" src="assets/images/tip/navigation.png">
+      </div>
+    </div>
+  </section>
+
+  <section ui-view="contentView" class="content-view"></section>
+
+</div>
