@@ -3,18 +3,16 @@ export function windowHeight($log, $window) {
 
   return function link(scope, element) {
 
-    function resize() {
-      var windowHeight = $window.outerHeight;
+    function setHeight() {
+      var windowHeight = $window.innerHeight;
       element.css('height', windowHeight + 'px');
     }
 
-    // init height
-    resize();
+    // init's
+    setHeight();
 
     // height in reize
-    angular.element($window).on('resize', function() {
-      resize();
-    });
+    angular.element($window).on('resize', _.debounce(setHeight, 250));
 
   }
 

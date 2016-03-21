@@ -15,6 +15,7 @@ import { ChannelController } from './channel/channel.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 import { windowHeight } from '../app/components/windowHeight.directive';
+import { bodyBackground } from '../app/components/bodyBackground.directive';
 
 // Import module
 angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr'])
@@ -32,3 +33,4 @@ angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 't
   // Channel => services and controllers
   .controller('ChannelController', ChannelController)
   .directive('windowHeight', windowHeight)
+  .directive('bodyBackground', bodyBackground)
