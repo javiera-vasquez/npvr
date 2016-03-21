@@ -51,6 +51,37 @@ $container-large-desktop:      (1220px + $grid-gutter-width) !default;
 // Include font path
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
+// Font faces import's
+@font-face {
+  font-family: 'interstatepro';
+  src:
+    local('../assets/fonts/interstatepro-extralight-webfont.eot'),
+    local('../assets/fonts/interstatepro-extralight-webfont.svg'),
+    local('../assets/fonts/interstatepro-extralight-webfont.ttf'),
+    local('../assets/fonts/interstatepro-extralight-webfont.woff');
+  font-weight: light;
+}
+
+@font-face {
+  font-family: 'interstatepro';
+  src:
+    local('../assets/fonts/interstatepro-light-webfont.eot'),
+    local('../assets/fonts/interstatepro-light-webfont.svg'),
+    local('../assets/fonts/interstatepro-light-webfont.ttf'),
+    local('../assets/fonts/interstatepro-light-webfont.woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'interstatepro';
+  src:
+    local('../assets/fonts/interstatepro-regular-webfont.eot'),
+    local('../assets/fonts/interstatepro-regular-webfont.svg'),
+    local('../assets/fonts/interstatepro-regular-webfont.ttf'),
+    local('../assets/fonts/interstatepro-regular-webfont.woff');
+  font-weight: bold;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies
@@ -59,26 +90,57 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 // endbower
 
 body {
+  overflow: hidden;
+  font-family: interstatepro, Helvetica, sans-serif;
+  background-color: black;
+}
+
+.container {padding: 0;}
+
+.initial-view {
+  z-index: 1;
+  position: absolute;
+  min-width: 1280px;
+  min-height: 720px;
+  // margin: 0 auto;
+}
+
+.background-image {
+  width: 100%;
+  z-index: 9999;
+  //padding: 50px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  filter: sepia(40%);
 }
 
-.initial-view {
-  min-width: 1280px;
-  min-height: 720px;
-  margin: 0 auto;
+
+.header {
+  height: 250px;
+  padding-top: 15px;
+  h2 {
+    color: white;
+    text-align: center;
+    font-weight: light;
+    text-shadow: rgba(black, .75) 0 3px 6px;
+    span {
+      font-size: 25px;
+      margin-left: 10px;
+    }
+  }
 }
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+.content-view {
+  position: absolute;
+  width: 100%;
+  height: 1500px;
 }
 
-.container {
-  padding: 0;
+.fake-background {
+  width: 100%;
+  height: 1500px;
+  background-image: linear-gradient(top, rgba(black, .25), rgba(black, .9) 7%);
 }
 
 /**

@@ -12,8 +12,6 @@ import { ChannelController } from './channel/channel.controller';
 // import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 // import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 // Directives
-import { NavbarDirective } from '../app/components/navbar/navbar.directive';
-import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 import { windowHeight } from '../app/components/windowHeight.directive';
 import { bodyBackground } from '../app/components/bodyBackground.directive';
 
