@@ -1,86 +1,5 @@
-/**
- *  If you want to override some bootstrap variables, you have to change values here.
- *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
- */
-
-//== Colors
-//## Gray and brand colors for use across Bootstrap.
-$gray-base:              #000 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
-
-$brand-primary:         red !default; // #337ab7
-$brand-success:         #5cb85c !default;
-$brand-info:            #5bc0de !default;
-$brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
-
-//== Scaffolding
-//## Settings for some of the most global styles.
-//** Background color for `<body>`.
-$body-bg:               #fff !default;
-//** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
-
-//** Global textual link color.
-$link-color:            $brand-primary !default;
-//** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
-//** Link hover decoration.
-$link-hover-decoration: underline !default;
-
-//== Grid system
-//## Define your custom responsive grid.
-//** Number of columns in the grid.
-$grid-columns:              12 !default;
-//** Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:         30px !default;
-
-//== Container sizes
-//## Define the maximum width of `.container` for different screen sizes.
-// Small screen / tablet
-$container-tablet:             (1220px + $grid-gutter-width) !default;
-// Medium screen / desktop
-$container-desktop:            (1220px + $grid-gutter-width) !default;
-// Large screen / wide desktop
-$container-large-desktop:      (1220px + $grid-gutter-width) !default;
-
-// Include font path
-$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-
-// Font faces import's
-@font-face {
-  font-family: 'interstatepro';
-  src:
-    local('../assets/fonts/interstatepro-extralight-webfont.eot'),
-    local('../assets/fonts/interstatepro-extralight-webfont.svg'),
-    local('../assets/fonts/interstatepro-extralight-webfont.ttf'),
-    local('../assets/fonts/interstatepro-extralight-webfont.woff');
-  font-weight: light;
-}
-
-@font-face {
-  font-family: 'interstatepro';
-  src:
-    local('../assets/fonts/interstatepro-light-webfont.eot'),
-    local('../assets/fonts/interstatepro-light-webfont.svg'),
-    local('../assets/fonts/interstatepro-light-webfont.ttf'),
-    local('../assets/fonts/interstatepro-light-webfont.woff');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'interstatepro';
-  src:
-    local('../assets/fonts/interstatepro-regular-webfont.eot'),
-    local('../assets/fonts/interstatepro-regular-webfont.svg'),
-    local('../assets/fonts/interstatepro-regular-webfont.ttf'),
-    local('../assets/fonts/interstatepro-regular-webfont.woff');
-  font-weight: bold;
-}
+@import 'fonts';
+@import 'variables';
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -95,53 +14,60 @@ body {
   background-color: black;
 }
 
-.container {padding: 0;}
+.container {
+  min-width: 1280px;
+}
 
 .initial-view {
-  z-index: 1;
   position: absolute;
-  min-width: 1280px;
-  min-height: 720px;
-  // margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
 }
 
 .background-image {
   width: 100%;
   z-index: 9999;
-  //padding: 50px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   filter: sepia(40%);
 }
 
-
+// Header => move to directive when is ready
 .header {
-  height: 250px;
-  padding-top: 15px;
+  height: 220px;
+  padding-top: 30px;
   h2 {
+    margin: 0;
     color: white;
     text-align: center;
     font-weight: light;
-    text-shadow: rgba(black, .75) 0 3px 6px;
+    text-shadow: rgba(black, .75) 0 0 10px;
     span {
       font-size: 25px;
       margin-left: 10px;
     }
   }
+  .logo {
+    margin-top: -30px;
+    margin-right: 30px;
+    height: 50px;
+  }
 }
 
+// Top menu => move to directive when is ready
 .content-view {
-  position: absolute;
   width: 100%;
-  height: 1500px;
+  height: 1000px; // Real height = 500px
+  background-image: linear-gradient(to top, rgba(black, .25), rgba(black, .8) 7%);
 }
 
-.fake-background {
-  width: 100%;
-  height: 1500px;
-  background-image: linear-gradient(top, rgba(black, .25), rgba(black, .9) 7%);
+.top-level-menu {
+  font-size: 35px;
+  height: 100px;
 }
+
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

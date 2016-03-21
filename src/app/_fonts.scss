@@ -1,0 +1,30 @@
+// Font faces import's
+@font-face {
+  font-family: 'interstatepro';
+  src:
+    local('../assets/fonts/interstatepro-extralight-webfont.eot'),
+    local('../assets/fonts/interstatepro-extralight-webfont.svg'),
+    local('../assets/fonts/interstatepro-extralight-webfont.ttf'),
+    local('../assets/fonts/interstatepro-extralight-webfont.woff');
+  font-weight: light;
+}
+
+@font-face {
+  font-family: 'interstatepro';
+  src:
+    local('../assets/fonts/interstatepro-light-webfont.eot'),
+    local('../assets/fonts/interstatepro-light-webfont.svg'),
+    local('../assets/fonts/interstatepro-light-webfont.ttf'),
+    local('../assets/fonts/interstatepro-light-webfont.woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'interstatepro';
+  src:
+    local('../assets/fonts/interstatepro-regular-webfont.eot'),
+    local('../assets/fonts/interstatepro-regular-webfont.svg'),
+    local('../assets/fonts/interstatepro-regular-webfont.ttf'),
+    local('../assets/fonts/interstatepro-regular-webfont.woff');
+  font-weight: bold;
+}
