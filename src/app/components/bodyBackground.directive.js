@@ -1,4 +1,4 @@
-export function bodyBackground($log) {
+export function bodyBackground() {
   'ngInject'
 
   return function link(scope, element) {

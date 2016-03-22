@@ -6,7 +6,7 @@ export class MainController {
     var mv = this;
     mv.channelInfo = initialConfig();
 
-    $log.debug('Main Controller loadded', mv.channelInfo);
+    $log.debug('Main Controller loadded');
   }
 
 }

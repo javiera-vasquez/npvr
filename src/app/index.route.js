@@ -14,7 +14,9 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/channel',
       views: {
         'contentView': {
-          templateUrl: 'app/channel/channel.html'
+          templateUrl: 'app/channel/channel.html',
+          controller: 'ChannelController',
+          controllerAs: 'channel'
         }
       }
     })
@@ -42,6 +44,15 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       views: {
         'contentView': {
           template: '<h1>PARA TI<h1>'
+        }
+      }
+    })
+
+    .state('home.search', {
+      url: '/search',
+      views: {
+        'contentView': {
+          template: '<h1>Buscar<h1>'
         }
       }
     })

@@ -16,8 +16,8 @@
     <div class="row">
       <div class="col-lg-12">
         <ul class="top-level-menu list-inline">
-          <li>
-            <a href ur-sref="channel">
+          <li ui-sref-active="active" class="search">
+            <a ui-sref="home.search">
               <span class="glyphicon glyphicon-search"></span>
             </a>
           </li>
@@ -25,7 +25,7 @@
             <a ui-sref="home.channel">{{ 'History Channel' | uppercase }}</a>
           </li>
           <li ui-sref-active="active">
-            <a ui-sref="home.record">{{ 'Mis gravaciones' | uppercase }}</a>
+            <a ui-sref="home.record">{{ 'Mis grabaciones' | uppercase }}</a>
           </li>
           <li ui-sref-active="active">
             <a ui-sref="home.vod">{{ 'VOD' | uppercase }}</a>
@@ -34,7 +34,7 @@
             <a ui-sref="home.custom">{{ 'Para ti' | uppercase }}</a>
           </li>
         </ul>
-        <img class="" src="assets/images/tip/navigation.png">
+        <img class="tip navigation pull-right" src="../../assets/images/navigation.png">
       </div>
     </div>
 

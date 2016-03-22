@@ -18,19 +18,22 @@ $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
+$black:                 $gray-base;
+$white:                 #fff;
+
 //== Scaffolding
 //## Settings for some of the most global styles.
 //** Background color for `<body>`.
-$body-bg:               #fff !default;
+$body-bg:               $black;
 //** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
+$text-color:            rgba($white, .75) !default;
 
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color:            $text-color !default;
 //** Link hover color set via `darken()` function.
 $link-hover-color:      darken($link-color, 15%) !default;
 //** Link hover decoration.
-$link-hover-decoration: underline !default;
+$link-hover-decoration: none !default;
 
 //== Grid system
 //## Define your custom responsive grid.
