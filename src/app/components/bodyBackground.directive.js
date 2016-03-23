@@ -1,3 +1,4 @@
+/* global _:false */
 export function bodyBackground() {
   'ngInject'
 

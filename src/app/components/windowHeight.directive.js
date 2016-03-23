@@ -1,9 +1,10 @@
+/* global _:false */
 export function windowHeight($window) {
   'ngInject'
 
   return function link(scope, element) {
 
-    var window = angular.element($window);
+    var windowContent = angular.element($window);
 
     function setHeight() {
       var windowHeight = $window.innerHeight;
@@ -14,8 +15,8 @@ export function windowHeight($window) {
     setHeight();
 
     // height in resize
-    window.on('resize', _.debounce(setHeight, 250));
-    window.on('$destroy', setHeight());
+    windowContent.on('resize', _.debounce(setHeight, 250));
+    windowContent.on('$destroy', setHeight());
 
   }
 
