@@ -1,1 +1,14 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur rerum perferendis totam nobis adipisci, doloribus maiores eligendi quae quos quibusdam blanditiis labore, voluptas expedita voluptatibus. Suscipit tempore molestias incidunt deleniti.</p>
+<p ng-hide="!channel.loading" class="">Cargando</p>
+
+<div class="box">
+
+  <div class="asdf" ng-repeat="show in channel.shows track by show.id">
+    <h1>{{ show.id }}</h1>
+    <h2>{{ show.name }}</h2>
+    <h4>{{ show.hour | date : 'h:mm'}}</h4>
+    <img ng-src="{{ main.config.images.base_url }}{{ main.config.images.poster_sizes[2] }}{{show.path}}">
+  </div>
+
+</div>
+
+

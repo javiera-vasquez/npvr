@@ -9,7 +9,7 @@
 // endbower
 
 body {
-  overflow: hidden;
+  //overflow: hidden;
   font-family: interstatepro, Helvetica, sans-serif;
 }
 
@@ -89,7 +89,17 @@ body {
  top: 30px;
 }
 
-
+.box {
+  height: 500px;
+  width: 10000px;
+  background-color: red;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  .asdf {
+    width: 300px;
+    float: left;
+  }
+}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

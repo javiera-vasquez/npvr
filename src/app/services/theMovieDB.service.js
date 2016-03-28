@@ -50,10 +50,10 @@ export function theMovieDB($http, $q, $log, $timeout) {
       method: 'GET',
       params: _setParams
     }).success(res => {
-      $log.debug('asdf', res);
+      $log.debug('Respond from service', res);
       // delay the respond for demo display
       $timeout(() => {
-        defered.resolve(res.results);
+        defered.resolve(res);
       }, delay);
     }).error(() => {
       defered.reject('fail')
