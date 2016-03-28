@@ -1,54 +1,69 @@
 export class ChannelController {
 
-  constructor($log, $http, $q, $filter) {
+  constructor($log, theMovieDB, appConfig) {
     'ngInject'
 
-    var mv = this;
+    let mv = this;
+    let api = appConfig();
 
-    var defered = $q.defer();
+    mv.loading = true;
+    mv.shows = mv.getShows;
 
-    var path = 'https://api.themoviedb.org/3/discover/tv';
-    var key = '25a2fd3a417ec4ca1d05c83fdb354704';
-    var language = 'es';
-    var network = '174';
+    theMovieDB.setParams({
+      api_key: api.key,
+      with_networks: '64',
+      language: 'es'
+    });
 
-    function getData() {
-      $http({
-        url: path,
-        method: 'GET',
-        params: {
-          api_key: key,
-          language: language,
-          with_networks: network
-        },
-      }).success(function(res) {
-        $log.debug(res);
-        defered.resolve(res.results)
-      }).error(function() {
-        defered.reject('fail')
+    mv.activate(theMovieDB, $log);
+
+  }
+
+  activate(theMovieDB, $log) {
+    return this.getShows(theMovieDB, $log);
+  }
+
+  getShows(theMovieDB, $log) {
+    let mv = this;
+    theMovieDB.getSeries(0)
+      .then(
+        (shows) => {
+          var id = 1;
+          let showList = [];
+          let len = shows.results.length;
+          let time = {
+            day: 86400000, // 24h
+            lapsus: [5400000, 3600000, 1800000], // 90min, 60min, 30min
+            dateStamp: Date.parse(new Date()) - 43200000
+          };
+          while (time.day > 0) {
+            let show = {};
+            let num = _.random(0, (len - 1));
+            let min = _.random(0, 2);
+            // add info the de show
+            show.id = id;
+            show.now = false;
+            show.hour = time.dateStamp;
+            show.name = shows.results[num].name;
+            show.path = shows.results[num].poster_path;
+            show.overview = shows.results[num].overview
+            show.menu = ['Reiniciar programa', 'Ver más episodios', 'Grabar', 'Más info'];
+            // push the program
+            showList.push(show);
+            // move the counter
+            id++;
+            time.day = time.day - time.lapsus[min];
+            time.dateStamp = time.dateStamp + time.lapsus[min];
+            $log.debug(show);
+          }
+          mv.shows = showList;
+          $log.debug('newArray', showList);
+        }, (reason) => {
+          $log.debug(reason);
+        })
+      .finally(() => {
+        mv.loading = false;
       });
-
-      return defered.promise;
-    }
-
-    var series = getData();
-
-    series
-      .then(function(shows) {
-        var lapsus = 30000;
-        var dateStamp = Date.parse(new Date(2016, 2, 15, 0, 0, 0));
-
-        angular.forEach(shows, function(show) {
-          show.hour = dateStamp;
-          dateStamp = dateStamp + lapsus;
-          console.log(show);
-        });
-
-        $log.debug(shows, lapsus, dateStamp);
-      })
-
-    // $log.debug('filter:', $filter('date')('1288323623006', 'yyyy-MM-dd HH:mm:ss Z'))
-
   }
 
 }
