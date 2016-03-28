@@ -6,7 +6,7 @@ import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
 import { ChannelController } from './channel/channel.controller';
 // Services
-import { initialConfig } from '../app/services/initialConfig.constant';
+import { appConfig } from '../app/services/appConfig.constant';
 import { theMovieDB } from '../app/services/theMovieDB.service';
 // Directives
 import { windowHeight } from '../app/components/windowHeight.directive';
@@ -14,7 +14,7 @@ import { bodyBackground } from '../app/components/bodyBackground.directive';
 
 // Import module
 angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr'])
-  .constant('initialConfig', initialConfig)
+  .constant('appConfig', appConfig)
   // Config and runtime of the app
   .config(config)
   .config(routerConfig)
