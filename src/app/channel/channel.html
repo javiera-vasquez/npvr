@@ -1,14 +1,30 @@
 <p ng-hide="!channel.loading" class="">Cargando</p>
 
-<div class="box">
+<div id="carrousel" class="">
+  <div class="overflow-div">
 
-  <div class="asdf" ng-repeat="show in channel.shows track by show.id">
-    <h1>{{ show.id }}</h1>
-    <h2>{{ show.name }}</h2>
-    <h4>{{ show.hour | date : 'h:mm'}}</h4>
-    <img ng-src="{{ main.config.images.base_url }}{{ main.config.images.poster_sizes[2] }}{{show.path}}">
+    <div class="slider" ng-repeat="show in channel.shows track by show.id">
+
+      <div class="detail" ng-if="show.time_line.is_live">
+        <div class="tumb">
+          <h3>AHORA</h3>
+
+          <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
+          <img class="poster" ng-src="{{ main.config.images.base_url }}{{ main.config.images.poster_sizes[3] }}{{show.path}}">
+        </div>
+        <div class="content">
+          <h1>{{ show.id }}</h1>
+          <h2>{{ show.name }}</h2>
+        </div>
+      </div>
+
+      <div class="poster" ng-if="!show.time_line.is_live">
+        <days-week current="channel.currentDay" date="show.time_line.hour_start"></days-week>
+        <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
+        <img class="poster" ng-src="{{ main.config.images.base_url }}{{ main.config.images.poster_sizes[2] }}{{show.path}}">
+      </div>
+
+    </div>
+
   </div>
-
 </div>
-
-

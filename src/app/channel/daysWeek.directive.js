@@ -10,7 +10,6 @@ export function daysWeek($log, $filter) {
     template: '{{ text | uppercase}}',
     link: function(scope) {
       let formatDate = $filter('date')(scope.date,'d');
-      //$log.debug(scope.current, formatDate);
       if(scope.current > formatDate) {
         scope.text = 'ayer';
       } else if(scope.current == formatDate) {

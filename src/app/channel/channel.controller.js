@@ -1,6 +1,6 @@
 export class ChannelController {
 
-  constructor($log, theMovieDB, appConfig) {
+  constructor($log, $stateParams, theMovieDB, appConfig) {
     'ngInject'
 
     let mv = this;
@@ -8,16 +8,22 @@ export class ChannelController {
 
     mv.loading = true;
     mv.shows = mv.getShows;
+    mv.currentDay = new Date()
+    mv.currentDay = mv.currentDay.getUTCDate();
 
     theMovieDB.setParams({
       api_key: api.key,
-      with_networks: '71',
+      with_networks: $stateParams.id,
       language: 'es'
     });
 
     mv.activate(theMovieDB, $log);
 
+    $log.debug('state', $stateParams.id);
+
   }
+
+
 
   activate(theMovieDB, $log) {
     return this.getShows(theMovieDB, $log);

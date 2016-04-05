@@ -11,7 +11,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
     })
 
     .state('home.channel', {
-      url: '/channel',
+      url: '/channel/:id',
       views: {
         'contentView': {
           templateUrl: 'app/channel/channel.html',

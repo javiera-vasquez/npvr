@@ -59,7 +59,7 @@ body {
 // Top menu => move to directive when is ready
 .content-view {
   width: 100%;
-  height: 1000px; // Real height = 500px
+  height: 500px; // Real height = 500px
   background-image: linear-gradient(to bottom, rgba($black, .25), rgba($black, .8) 7%);
 }
 
@@ -89,15 +89,52 @@ body {
  top: 30px;
 }
 
-.box {
-  height: 500px;
-  width: 10000px;
-  background-color: red;
+#carrousel {
+  left: 0;
+  height: 400px;
+  width: 1280px;
+  position: absolute;
+  overflow-y: hidden;
   overflow-x: scroll;
-  overflow-y: scroll;
-  .asdf {
-    width: 300px;
-    float: left;
+  background-color: rgba(red, 0.1);
+  h4, h3 {
+    padding: 0;
+    margin: 0;
+  }
+  .overflow-div {
+    display: flex;
+    flex-wrap: nowrap;
+    //transform: translateX(-1000px);
+  }
+  .slider {
+    display: flex;
+    align-self: center;
+    padding: 0 10px;
+  }
+}
+
+#carrousel .slider {
+  .detail {
+    display: flex;
+    flex-direction: row;
+    height: 380px;
+    width: 600px;
+    background-color: rgba(red, 0.3);
+    .content {
+      width: 600%;
+    }
+    .tumb {
+      width: 40%;
+      background-color: fuchsia;
+      .poster {
+        transform: scale(.5);
+      }
+    }
+  }
+  .poster {
+    h3 {font-size: 18px;}
+    h4 {font-size: 14px;}
+    img {transform: scale(.9);}
   }
 }
 
