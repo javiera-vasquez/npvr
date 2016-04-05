@@ -11,6 +11,7 @@ import { theMovieDB } from '../app/services/theMovieDB.service';
 // Directives
 import { windowHeight } from '../app/components/windowHeight.directive';
 import { bodyBackground } from '../app/components/bodyBackground.directive';
+import { daysWeek } from '../app/channel/daysWeek.directive';
 
 // Import module
 angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr'])
@@ -24,6 +25,7 @@ angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 't
   // Directives
   .directive('windowHeight', windowHeight)
   .directive('bodyBackground', bodyBackground)
+  .directive('daysWeek', daysWeek)
   // Controllers
   .controller('MainController', MainController)
   .controller('ChannelController', ChannelController)
