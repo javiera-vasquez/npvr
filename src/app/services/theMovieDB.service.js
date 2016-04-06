@@ -8,7 +8,7 @@ export function theMovieDB($http, $q, $log, $timeout) {
 
   const endpoints = {
     series: '/discover/tv', // => Discover TV shows by different types of data
-    show: '/tv/id', // => Get the primary information about a TV (valid id's = tmdb or imdb)
+    show: '/tv/', // => Get the primary information about a TV (valid id's = tmdb or imdb)
     config: '/configuration' // => Get the system wide configuration information.
   }
 
@@ -25,8 +25,8 @@ export function theMovieDB($http, $q, $log, $timeout) {
     return makeRequest(delay, endpoints.series);
   }
 
-  function getShow(delay) {
-    return makeRequest(delay, endpoints.show);
+  function getShow(id, delay) {
+    return makeRequest(delay, (endpoints.show + id));
   }
 
   function getConfig(delay) {
