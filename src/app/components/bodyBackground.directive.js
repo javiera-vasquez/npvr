@@ -1,13 +1,13 @@
-/* global _:false */
-export function bodyBackground() {
+export function bodyBackground($log) {
   'ngInject'
 
-  return function link(scope, element) {
+  return function link(scope, element, attr) {
+
+    $log.debug(scope, element, attr);
 
     function backgroundRandom() {
-      var path = '.././assets/images/backgrounds/background_'
-      var number = _.random(1, 10);
-      element.css('background-image', 'url(' + path + number + '.jpg)');
+      var path = attr.path + attr.poster
+      element.css('background-image', 'url(' +  path + ')');
     }
 
     // init's
