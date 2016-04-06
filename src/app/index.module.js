@@ -8,6 +8,7 @@ import { ChannelController } from './channel/channel.controller';
 // Services
 import { appConfig } from '../app/services/appConfig.constant';
 import { theMovieDB } from '../app/services/theMovieDB.service';
+import { channelService } from '../app/services/channel.service';
 // Directives
 import { windowHeight } from '../app/components/windowHeight.directive';
 import { bodyBackground } from '../app/components/bodyBackground.directive';
@@ -22,6 +23,7 @@ angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 't
   .run(runBlock)
   // Services
   .factory('theMovieDB', theMovieDB)
+  .factory('channelService', channelService)
   // Directives
   .directive('windowHeight', windowHeight)
   .directive('bodyBackground', bodyBackground)
