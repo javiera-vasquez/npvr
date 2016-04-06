@@ -1,42 +1,50 @@
-<section class="header">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Ahora: {{ main.now.name }} <span class="glyphicon glyphicon-repeat"></span></h2>
-        <img class="logo pull-right" ng-src="assets/channels/{{ main.appConfig.channel }}.png">
+<div id="page-content" window-height>
+
+  <section class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Ahora: {{ main.show.name }} <span class="glyphicon glyphicon-repeat"></span></h2>
+          <img class="logo pull-right" ng-src="assets/channels/{{ main.appConfig.channel }}.png">
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="content-view">
-  <!--menu-->
-  <div class="container">
+  <section class="content-view">
+    <!--menu-->
+    <div class="container">
 
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="top-level-menu list-inline">
-          <li ui-sref-active="active" class="search">
-            <a ui-sref="home.search">
-              <span class="glyphicon glyphicon-search"></span>
-            </a>
-          </li>
-          <li ng-repeat="menu in main.appConfig.menus" ui-sref-active="active">
-            <a ui-sref="home.{{ menu.route }}">{{ menu.channel | uppercase }}</a>
-          </li>
-        </ul>
-        <img class="tip navigation pull-right" src="../../assets/images/navigation.png">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="top-level-menu list-inline">
+            <li ui-sref-active="active" class="search">
+              <a ui-sref="home.search">
+                <span class="glyphicon glyphicon-search"></span>
+              </a>
+            </li>
+            <li ng-repeat="menu in main.menus" ui-sref-active="active">
+              <a ui-sref="home.{{ menu.route }}">{{ menu.channel | uppercase }}</a>
+            </li>
+          </ul>
+          <img class="tip navigation pull-right" src="../../assets/images/navigation.png">
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <!--inner view-->
-        <div ui-view="contentView"></div>
+      <div class="row">
+        <div class="col-lg-12">
+          <!--inner view-->
+          <div ui-view="contentView"></div>
+        </div>
       </div>
-    </div>
 
-  </div>
-  <!--background gradient-->
-  <div class="background-gradient"></div>
-</section>
+    </div>
+    <!--background gradient-->
+    <div class="background-gradient"></div>
+  </section>
+
+</div>
+
+<div id="background-image" window-height>
+  <img ng-src="{{ main.apiParams.images.base_url + main.apiParams.images.backdrop_sizes[2] + main.show.backdrop_path }}">
+</div>

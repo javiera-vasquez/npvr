@@ -8,20 +8,19 @@
       <div class="detail" ng-if="show.time_line.is_live">
         <div class="tumb">
           <h3>AHORA</h3>
-
           <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
-          <img class="poster" ng-src="{{ main.config.images.base_url }}{{ main.config.images.poster_sizes[3] }}{{show.path}}">
+          <img class="poster" ng-src="{{ main.apiParams.images.base_url }}{{ main.apiParams.images.poster_sizes[3] }}{{show.path}}">
         </div>
         <div class="content">
-          <h1>{{ show.id }}</h1>
           <h2>{{ show.name }}</h2>
+          <h2>Temp 01 eps 02</h2>
         </div>
       </div>
 
       <div class="poster" ng-if="!show.time_line.is_live">
         <days-week current="channel.currentDay" date="show.time_line.hour_start"></days-week>
         <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
-        <img class="poster" ng-src="{{ main.config.images.base_url }}{{ main.config.images.poster_sizes[2] }}{{show.path}}">
+        <img class="poster" ng-src="{{ main.apiParams.images.base_url }}{{ main.apiParams.images.poster_sizes[2] }}{{show.path}}">
       </div>
 
     </div>

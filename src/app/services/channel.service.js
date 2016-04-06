@@ -1,7 +1,7 @@
 export function channelService($log, $q, $timeout) {
   'ngInject'
 
-  let shows = {};
+  let shows = [];
 
   const service = {
     setShows: setShows,
@@ -11,17 +11,17 @@ export function channelService($log, $q, $timeout) {
   return service;
 
   function getShows(delay) {
-    $log.debug('get a', shows);
+    //$log.debug('get a', shows);
     let defered = $q.defer();
     $timeout(() => {
-      $log.debug('get b', shows);
+      //$log.debug('get b', shows);
       defered.resolve(shows);
     }, delay)
     return defered.promise;
   }
 
   function setShows(series) {
-    $log.debug('set', series);
+    //$log.debug('set', series);
     return shows = series;
   }
 
