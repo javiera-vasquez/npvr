@@ -57,5 +57,5 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }
     })
 
-  $urlRouterProvider.otherwise('/channel');
+  $urlRouterProvider.otherwise('/channel/64');
 }

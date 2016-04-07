@@ -1,7 +1,7 @@
 /* global _:false */
 export function windowHeight($window) {
   'ngInject'
-
+  
   return function link(scope, element) {
 
     var windowContent = angular.element($window);

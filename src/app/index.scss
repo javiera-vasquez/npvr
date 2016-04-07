@@ -11,7 +11,7 @@
 body {
   //overflow: hidden;
   font-family: interstatepro, Helvetica, sans-serif;
-  background-color: transparent;
+  background-color: $black;
 }
 
 .container {
@@ -38,8 +38,10 @@ body {
   position: absolute;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  filter: sepia(40%);
+  background-repeat: repeat;
+  animation-delay: 1s;
+  animation-duration: 2s;
+  filter: sepia(25%) grayscale(25%);
 }
 
 // Header => move to directive when is ready
