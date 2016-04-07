@@ -1,12 +1,10 @@
-export function bodyBackground($log, $timeout) {
+export function bodyBackground($log) {
   'ngInject'
 
   return function(scope, element, attrs) {
     scope.$watch(attrs.path, function(value) {
       element.addClass('animated fadeIn');
-      element.css({
-        'background-image': 'url(' + value + ')'
-      });
+      element.css({'background-image': 'url(' + value + ')'});
     });
   }; 
 
