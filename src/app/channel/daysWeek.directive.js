@@ -2,7 +2,7 @@ export function daysWeek($log, $filter) {
   'ngInject'
 
   return {
-    restrict: 'E',
+    restrict: 'EA',
     scope: {
       current: '=',
       date: '='

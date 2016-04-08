@@ -8,7 +8,6 @@
 // bower:scss
 // endbower
 
-
 body {
   //overflow: hidden;
   font-family: interstatepro, Helvetica, sans-serif;
@@ -45,7 +44,16 @@ body {
   filter: sepia(25%) grayscale(25%);
 }
 
-// spinner 
+// dev bg func()
+$bg-dev: true;
+
+@mixin background-dev($n) {
+  @if $bg-dev == true {
+    background-color: rgba(red, $n);
+  } @else {}
+}
+
+// spinner
 .spinner-box {
   width: 100%;
   height: 400px;
@@ -73,7 +81,7 @@ $duration: 1.4s;
   stroke-dashoffset: 0;
   transform-origin: center;
   animation:
-    dash $duration ease-in-out infinite, 
+    dash $duration ease-in-out infinite,
     colors ($duration*4) ease-in-out infinite;
 }
 
@@ -127,7 +135,14 @@ $duration: 1.4s;
   background-image: linear-gradient(to bottom, rgba($black, .25), rgba($black, .8) 7%);
 }
 
-.top-level-menu {
+.tip.navigation {
+ position: absolute;
+ right: 20px;
+ top: 30px;
+}
+
+// share menu styles
+.navigation.top-level {
   margin: 0 10px 25px;
   padding: 25px 0 0;
   font-size: 35px;
@@ -147,20 +162,33 @@ $duration: 1.4s;
   }
 }
 
-.tip.navigation {
- position: absolute;
- right: 20px;
- top: 30px;
+.navigation.inner-menu {
+  margin: 0;
+  padding: 0;
+  font-size: 25px; //
+  line-height: 25px; //
+  font-weight: lighter;
+  li {
+    margin-bottom: 15px;
+    padding: 0 0 5px 0;
+    list-style: none;
+  }
+  li.active a {
+    color: $brand-primary;
+    border-bottom: 5px solid $brand-primary;
+  }
 }
+
+// Carrousel start here
 
 #carrousel {
   left: 0;
-  height: 400px;
+  height: 370px;
   width: 1280px;
   position: absolute;
   overflow-y: hidden;
   overflow-x: scroll;
-  //background-color: rgba(red, 0.1);
+  @include background-dev(0.1);
   h4, h3 {
     padding: 0;
     margin: 0;
@@ -173,32 +201,61 @@ $duration: 1.4s;
   .slider {
     display: flex;
     align-self: center;
-    padding: 0 10px;
+    padding: 0;
   }
 }
 
 #carrousel .slider {
-  .detail {
+  .program {
+    h3 {color: rgba($white, .8);}
+    h4 {
+      margin-bottom: 5px;
+      color: rgba($white, .6);
+    }
+  }
+  .program.detail {
     display: flex;
-    flex-direction: row;
-    height: 380px;
+    flex-wrap: wrap;
+    height: 370px;
     width: 600px;
-    //background-color: rgba(red, 0.3);
-    .content {
-      width: 600%;
+    @include background-dev(0.2);
+    .time {
+      width: 600px;
+      padding-left: 15px;
+      h3 {font-size: 24px;}
+      h4 {font-size: 20px;}
     }
     .tumb {
-      width: 40%;
-      background-color: fuchsia;
+      width: 200px;
+      padding-left: 15px;
       .poster {
-        transform: scale(.5);
+        width: 185px;
+        transform: scale(1);
+      }
+    }
+    .content {
+      width: 400px;
+      padding: 0 15px;
+      .episode {
+        h2, h3 {
+          margin: 0;
+          color: rgba($white, 1);
+        }
       }
     }
   }
-  .poster {
+  .program.compact {
+    width: 182px;
+    height: 275px;
+    padding-left: 17px;
+    @include background-dev(0.1);
     h3 {font-size: 18px;}
     h4 {font-size: 14px;}
-    img {transform: scale(.9);}
+    img {
+      width: 148px;
+      margin-top: 10px;
+      transform: scale(1);
+    }
   }
 }
 
