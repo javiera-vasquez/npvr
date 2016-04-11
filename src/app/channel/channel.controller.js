@@ -1,6 +1,6 @@
 export class ChannelController {
 
-  constructor($log, $state, theMovieDB, channelService, appConfig) {
+  constructor($log, $state, $scope, theMovieDB, channelService, appConfig) {
     'ngInject'
 
     let mv = this;
@@ -10,11 +10,11 @@ export class ChannelController {
     mv.loading = true;
     mv.currentDay = new Date()
     mv.currentDay = mv.currentDay.getUTCDate();
-    mv.goToDetail = goToDetail;
+    mv.expandShow = expandShow;
 
     activate();
 
-    $log.debug('Channel Controller loadded', $state);
+    $log.debug('Channel Controller loadded');
 
     function activate() {
       return getShows().then(() => {
@@ -24,17 +24,30 @@ export class ChannelController {
 
     function getShows() {
       return channelService.getShows(_.random(1000, 2000)).then((shows) => {
-        $log.debug('shows from channelService get', shows);
+        angular.forEach(shows, (show) => {
+            show.expand = (show.time_line.is_live) ? true : false;
+        })
         mv.shows = shows;
+        $log.debug('shows from channelService get', mv.shows);
       })
       .finally(() => {
         mv.loading = false;
       });
     }
 
-    function goToDetail(id) {
-      $state.go('home.channel.detail', {network: $state.params.network, id:id});
+    function expandShow(id) {
+      angular.forEach(mv.shows, (show) => {
+        show.expand = (show.id === id) ? true : false;
+      });
+      $scope.$watch(
+        "channel.shows",
+         function handleFooChange( newValue, oldValue ) {
+          console.log( "mv.shows", newValue );
+         }
+      );
     }
 
   }
 }
+
+// $state.go('home.channel.detail', {network: $state.params.network, id:id});
