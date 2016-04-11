@@ -1,0 +1,97 @@
+
+// dev bg func() for carrousel
+$bg-dev: false;
+
+@mixin background-dev($n) {
+  @if $bg-dev == true {
+    background-color: rgba(red, $n);
+  }
+}
+
+// Carrousel start here
+#carrousel {
+  left: 0;
+  height: 345px;
+  width: 1280px;
+  position: absolute;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  @include background-dev(0.1);
+  h4, h3 {
+    padding: 0;
+    margin: 0;
+  }
+  .overflow-div {
+    display: flex;
+    flex-wrap: nowrap;
+    //transform: translateX(-1000px);
+  }
+  .slider {
+    display: flex;
+    align-self: center;
+    padding: 0;
+  }
+}
+
+#carrousel .slider {
+  .program {
+    h3 {color: rgba($white, .8);}
+    h4 {
+      margin-bottom: 5px;
+      color: rgba($white, .6);
+    }
+  }
+  .program.detail {
+    display: flex;
+    flex-wrap: wrap;
+    height: 345px;
+    width: 600px;
+    @include background-dev(0.2);
+    .time {
+      width: 600px;
+      padding-left: 15px;
+      h3 {font-size: 24px;}
+      h4 {
+        margin-bottom: 4px;
+        font-size: 18px;
+      }
+    }
+    .tumb {
+      width: 200px;
+      padding-left: 15px;
+      .poster {
+        width: 185px;
+        transform: scale(1);
+      }
+    }
+    .content {
+      width: 400px;
+      padding: 0 15px;
+      .episode {
+        margin-bottom: 20px;
+        h2 {
+          margin: 0;
+          font-size: 28px;
+          color: rgba($white, 1);
+        }
+        h4 {
+          font-size: 20px;
+          color: rgba($white, .75);
+        }
+      }
+    }
+  }
+  .program.compact {
+    width: 182px;
+    height: 275px;
+    padding-left: 17px;
+    @include background-dev(0.1);
+    h3 {font-size: 18px;}
+    h4 {font-size: 14px;}
+    img {
+      width: 148px;
+      margin-top: 10px;
+      transform: scale(1);
+    }
+  }
+}
