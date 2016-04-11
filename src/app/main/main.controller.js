@@ -14,7 +14,7 @@ export class MainController {
     theMovieDB.setParams({
       api_key: api.key,
       language: 'es',
-      with_networks: $state.params.id
+      with_networks: $state.params.network
     });
 
     activate();

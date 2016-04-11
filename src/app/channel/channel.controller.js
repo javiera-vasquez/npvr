@@ -1,6 +1,6 @@
 export class ChannelController {
 
-  constructor($log, $stateParams, theMovieDB, channelService, appConfig) {
+  constructor($log, $state, theMovieDB, channelService, appConfig) {
     'ngInject'
 
     let mv = this;
@@ -10,10 +10,11 @@ export class ChannelController {
     mv.loading = true;
     mv.currentDay = new Date()
     mv.currentDay = mv.currentDay.getUTCDate();
+    mv.goToDetail = goToDetail;
 
     activate();
 
-    $log.debug('Channel Controller loadded');
+    $log.debug('Channel Controller loadded', $state);
 
     function activate() {
       return getShows().then(() => {
@@ -29,6 +30,10 @@ export class ChannelController {
       .finally(() => {
         mv.loading = false;
       });
+    }
+
+    function goToDetail(id) {
+      $state.go('home.channel.detail', {network: $state.params.network, id:id});
     }
 
   }

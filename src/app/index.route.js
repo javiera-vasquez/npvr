@@ -11,12 +11,23 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
     })
 
     .state('home.channel', {
-      url: '/channel/:id',
+      url: '/channel/:network',
       views: {
         'contentView': {
           templateUrl: 'app/channel/channel.html',
           controller: 'ChannelController',
           controllerAs: 'channel'
+        }
+      }
+    })
+
+    .state('home.channel.detail', {
+      url: '/detail/:id',
+      views: {
+        'detail@home.channel': {
+          template: '<h1>expand show of detail</h1>',
+          controller: function(){console.log('show detail')},
+          controllerAs: 'detail'
         }
       }
     })

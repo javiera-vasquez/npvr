@@ -7,7 +7,6 @@
 
 <div id="carrousel" class="">
   <div class="overflow-div">
-
     <div class="slider" ng-repeat="show in channel.shows track by show.id">
 
       <div class="program detail" ng-if="show.time_line.is_live">
@@ -22,25 +21,31 @@
         <div class="content">
           <div class="episode">
             <h2>{{ show.name }}</h2>
-            <h3>Temp 01 Eps 02</h3>
+            <h4>Temp 01 Eps 01</h4>
           </div>
           <ul class="navigation inner-menu">
-            <li ng-if="!show.catchup" class="active"><a>{{ 'Reiniciar Programa' | uppercase }}</a></li>
-            <li><a>{{ 'Ver Más Episodios' | uppercase }}</a></li>
+            <li ng-if="!show.catchup" ng-class="{ 'active': {{ !show.catchup }} }"><a>{{ 'Reiniciar Programa' | uppercase }}</a></li>
+            <li ng-class="{ 'active': {{ show.catchup }} }"><a>{{ 'Ver Más Episodios' | uppercase }}</a></li>
             <li><a>{{ 'Grabar' | uppercase }}</a></li>
             <li><a>{{ 'Más Info' | uppercase }}</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="program compact" ng-if="!show.time_line.is_live">
+      <div class="program compact" ng-if="true" ng-class="{ 'active' : {{ show.time_line.is_live }} }">
         <h4 ng-if="show.time_line.is_live">AHORA</h4>
         <h4 ng-if="!show.time_line.is_live" days-week current="channel.currentDay" date="show.time_line.hour_start"></h4>
         <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
-        <img class="poster" ng-src="{{ main.apiParams.images.base_url }}{{ main.apiParams.images.poster_sizes[2] }}{{show.path}}">
+        <img
+          class="poster"
+          ng-click="channel.goToDetail(1)"
+          ng-class="{ 'active' : {{ show.time_line.is_live }} }"
+          ng-src="{{ main.apiParams.images.base_url }}{{ main.apiParams.images.poster_sizes[2] }}{{show.path}}"
+        >
       </div>
 
     </div>
-
   </div>
 </div>
+
+<div ui-view="detail"></div>
