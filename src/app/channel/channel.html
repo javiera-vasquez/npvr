@@ -1,3 +1,8 @@
+<div class="pagination">
+  <p class="pull-left" ng-click="nextShow"><span class="glyphicon glyphicon-chevron-left"></span></p>
+  <p class="pull-right" ng-click="previusShow"><span class="glyphicon glyphicon-chevron-right"></span></p>
+</div>
+
 <div ng-hide="!channel.loading" class="spinner-box" ng-class="">
   <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
     <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
@@ -7,45 +12,49 @@
 
 <div id="carrousel" class="">
   <div class="overflow-div">
-    <div class="slider" ng-repeat="show in channel.shows track by show.id">
+    <div class="slider" ng-repeat="show in channel.shows track by show.id" ng-if="!channel.inRange($index)">
 
-      <div class="program detail" ng-if="show.expand">
+      <div class="program" ng-class="show.expand ? 'detail' : 'compact'">
         <div class="time">
           <h4 ng-if="show.time_line.is_live">AHORA</h4>
           <h4 ng-if="!show.time_line.is_live" days-week current="channel.currentDay" date="show.time_line.hour_start"></h4>
           <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
         </div>
         <div class="tumb">
-          <img class="poster" ng-src="{{ main.apiParams.images.base_url }}{{ main.apiParams.images.poster_sizes[2] }}{{show.path}}">
+          <img
+            class="poster"
+            ng-click="channel.expandShow($index)"
+            ng-src="{{ main.apiParams.images.base_url }}{{ main.apiParams.images.poster_sizes[2] }}{{show.path}}"
+          >
         </div>
-        <div class="content">
+        <div class="content" ng-if="show.expand">
           <div class="episode">
             <h2>{{ show.name }}</h2>
             <h4>Temp 01 Eps 01</h4>
           </div>
           <ul class="navigation inner-menu">
-            <li ng-if="!show.catchup" ng-class="{ 'active': {{ !show.catchup }} }"><a>{{ 'Reiniciar Programa' | uppercase }}</a></li>
-            <li ng-class="{ 'active': {{ show.catchup }} }"><a>{{ 'Ver Más Episodios' | uppercase }}</a></li>
+            <li
+              ng-if="!show.catchup"
+              ng-class="{ 'active': {{ !show.catchup }} }">
+              <a>{{ 'Reiniciar Programa' | uppercase }}</a>
+            </li>
+            <li
+              ng-class="{ 'active': {{ show.catchup }} }">
+              <a>{{ 'Ver Más Episodios' | uppercase }}</a>
+            </li>
             <li><a>{{ 'Grabar' | uppercase }}</a></li>
             <li><a>{{ 'Más Info' | uppercase }}</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="program compact" ng-if="!show.expand" ng-class="{ 'active' : {{ show.time_line.is_live }} }">
-        <h4 ng-if="show.time_line.is_live">AHORA</h4>
-        <h4 ng-if="!show.time_line.is_live" days-week current="channel.currentDay" date="show.time_line.hour_start"></h4>
-        <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
-        <img
-          class="poster"
-          ng-click="channel.expandShow(show.id)"
-          ng-class="{ 'active' : {{ show.time_line.is_live }} }"
-          ng-src="{{ main.apiParams.images.base_url }}{{ main.apiParams.images.poster_sizes[2] }}{{show.path}}"
-        >
-      </div>
-
     </div>
   </div>
+</div>
+
+<div class="arrows">
+  <p class="pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Más Programas</p>
+  <p class="pull-right">Más Programas <span class="glyphicon glyphicon-chevron-right"></span></p>
 </div>
 
 <div ui-view="detail"></div>

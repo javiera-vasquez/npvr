@@ -6,7 +6,7 @@ export function appConfig() {
     key: '25a2fd3a417ec4ca1d05c83fdb354704',
     menus: [
       {
-        channel: 'Discovery Channel',
+        channel: 'Fox+',
         route: 'channel'
       }, {
         channel: 'Mis grabaciones',

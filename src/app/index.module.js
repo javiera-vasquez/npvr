@@ -13,6 +13,8 @@ import { channelService } from '../app/services/channel.service';
 import { windowHeight } from '../app/components/windowHeight.directive';
 import { bodyBackground } from '../app/components/bodyBackground.directive';
 import { daysWeek } from '../app/channel/daysWeek.directive';
+// Animations
+import { slider } from '../app/channel/slider.animation';
 
 // Import module
 angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr'])
@@ -31,5 +33,7 @@ angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 't
   // Controllers
   .controller('MainController', MainController)
   .controller('ChannelController', ChannelController)
+  // Animations
+  //.animation('.slider', slider)
 
 

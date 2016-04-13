@@ -8,10 +8,32 @@ $bg-dev: false;
   }
 }
 
+.contentView {
+  height: 363px
+}
+
+.arrows, .pagination {
+  height: 20px;
+  width: 98%;
+  position: absolute;
+  bottom: 0;
+  p {color: rgba($white, .4);}
+}
+
+.pagination {
+  bottom: auto;
+  top: -50%;
+  p {
+    font-size: 30px;
+    color: rgba($white, 1);
+    text-shadow: 0 0 5px rgba($black, .5);
+  }
+}
+
 // Carrousel start here
 #carrousel {
   left: 0;
-  height: 345px;
+  height: 340px;
   width: 1280px;
   position: absolute;
   overflow-y: hidden;
@@ -40,17 +62,22 @@ $bg-dev: false;
       margin-bottom: 5px;
       color: rgba($white, .6);
     }
+    .poster {
+      animation: 4s linear 0s;
+    }
   }
   .program.detail {
     display: flex;
     flex-wrap: wrap;
     height: 345px;
     width: 600px;
+    animation: fadeIn 1s;
     @include background-dev(0.2);
     .time {
       width: 600px;
       padding-left: 15px;
-      h3 {font-size: 24px;}
+      h3 {
+        font-size: 24px;}
       h4 {
         margin-bottom: 4px;
         font-size: 18px;
@@ -60,13 +87,15 @@ $bg-dev: false;
       width: 200px;
       padding-left: 15px;
       .poster {
-        width: 185px;
+        //width: 185px;
         transform: scale(1);
+        //animation: fadeIn .75s;
       }
     }
     .content {
       width: 400px;
       padding: 0 15px;
+      //animation: fadeIn .5s;
       .episode {
         margin-bottom: 20px;
         h2 {
@@ -85,13 +114,23 @@ $bg-dev: false;
     width: 182px;
     height: 275px;
     padding-left: 17px;
+    opacity: .75;
     @include background-dev(0.1);
     h3 {font-size: 18px;}
     h4 {font-size: 14px;}
-    img {
-      width: 148px;
-      margin-top: 10px;
-      transform: scale(1);
+    .poster {
+      //width: 148px;
+      // margin-top: 10px;
+      transform: scale(.8) translateX(-22px) translateY(-22px);
     }
+  }
+}
+
+.slider {
+  &.ng-enter {
+    animation: zoomIn .5s;
+  }
+  &.ng-leave {
+    //animation: zoomOut 3s;
   }
 }

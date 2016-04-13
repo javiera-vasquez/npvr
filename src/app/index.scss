@@ -1,5 +1,5 @@
-@import 'fonts';
 @import 'variables';
+@import 'fonts';
 @import 'carrousel';
 @import 'spinner';
 
@@ -87,7 +87,7 @@ body {
 
 // share menu styles
 .navigation.top-level {
-  margin: 0 10px 25px;
+  margin: 0 10px 20px;
   padding: 25px 0 0;
   font-size: 35px;
   line-height: 35px;
@@ -129,3 +129,4 @@ body {
  */
 // injector
 // endinjector
+
