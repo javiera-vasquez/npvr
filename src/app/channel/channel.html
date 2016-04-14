@@ -1,23 +1,28 @@
-<div class="pagination">
+<div class="pagination hide">
   <p class="pull-left" ng-click="nextShow"><span class="glyphicon glyphicon-chevron-left"></span></p>
   <p class="pull-right" ng-click="previusShow"><span class="glyphicon glyphicon-chevron-right"></span></p>
 </div>
 
-<div ng-hide="!channel.loading" class="spinner-box" ng-class="">
+<div ng-hide="!channel.loading" class="spinner-box">
   <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
     <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
   </svg>
   <h3>CARGANDO</h3>
 </div>
 
-<div id="carrousel" class="">
+<div id="carrousel">
   <div class="overflow-div">
-    <div class="slider" ng-repeat="show in channel.shows track by show.id" ng-if="!channel.inRange($index)">
+    <div
+      class="slider-animation"
+      ng-repeat="show in channel.shows track by show.id"
+      ng-if="!channel.showsInRange($index)">
 
       <div class="program" ng-class="show.expand ? 'detail' : 'compact'">
         <div class="time">
           <h4 ng-if="show.time_line.is_live">AHORA</h4>
-          <h4 ng-if="!show.time_line.is_live" days-week current="channel.currentDay" date="show.time_line.hour_start"></h4>
+          <h4 ng-if="!show.time_line.is_live"
+            days-week current="channel.currentDay"
+            date="show.time_line.hour_start"></h4>
           <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
         </div>
         <div class="tumb">
@@ -34,16 +39,18 @@
           </div>
           <ul class="navigation inner-menu">
             <li
-              ng-if="!show.catchup"
-              ng-class="{ 'active': {{ !show.catchup }} }">
+              ui-sref="player"
+              ng-if="show.time_line.is_live"
+              ng-class="{ 'active': {{ show.time_line.is_live }} }">
               <a>{{ 'Reiniciar Programa' | uppercase }}</a>
             </li>
             <li
-              ng-class="{ 'active': {{ show.catchup }} }">
+              ui-sref="vod({type:list})"
+              ng-class="{ 'active': {{ !show.time_line.is_live }} }">
               <a>{{ 'Ver Más Episodios' | uppercase }}</a>
             </li>
-            <li><a>{{ 'Grabar' | uppercase }}</a></li>
-            <li><a>{{ 'Más Info' | uppercase }}</a></li>
+            <li ui-sref="home.channel.rec({detail:show.id})"><a>{{ 'Grabar' | uppercase }}</a></li>
+            <li ng-click="channel.openModal(show.id)"><a>{{ 'Más Info' | uppercase }}</a></li>
           </ul>
         </div>
       </div>
@@ -57,4 +64,21 @@
   <p class="pull-right">Más Programas <span class="glyphicon glyphicon-chevron-right"></span></p>
 </div>
 
-<div ui-view="detail"></div>
+<div id="asdfasdf" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+        <div ui-view="detail"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

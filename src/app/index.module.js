@@ -5,6 +5,7 @@ import { runBlock } from './index.run';
 // Controllers
 import { MainController } from './main/main.controller';
 import { ChannelController } from './channel/channel.controller';
+import { ShowDetailController } from './channel/show.detail.controller';
 // Services
 import { appConfig } from '../app/services/appConfig.constant';
 import { theMovieDB } from '../app/services/theMovieDB.service';
@@ -14,7 +15,7 @@ import { windowHeight } from '../app/components/windowHeight.directive';
 import { bodyBackground } from '../app/components/bodyBackground.directive';
 import { daysWeek } from '../app/channel/daysWeek.directive';
 // Animations
-import { slider } from '../app/channel/slider.animation';
+import { slideAnimation } from '../app/channel/slider.animation';
 
 // Import module
 angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr'])
@@ -33,7 +34,8 @@ angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 't
   // Controllers
   .controller('MainController', MainController)
   .controller('ChannelController', ChannelController)
+  .controller('ShowDetailController', ShowDetailController)
   // Animations
-  //.animation('.slider', slider)
+  //.animation('.slider-animation', slideAnimation)
 
 

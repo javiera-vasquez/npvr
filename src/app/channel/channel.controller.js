@@ -13,7 +13,8 @@ export class ChannelController {
     mv.currentDay = new Date()
     mv.currentDay = mv.currentDay.getUTCDate();
     mv.expandShow = expandShow;
-    mv.inRange = inRange;
+    mv.showsInRange = showsInRange;
+    mv.openModal = openModal;
 
     activate();
 
@@ -46,7 +47,7 @@ export class ChannelController {
     }
 
     function expandShow(id) {
-      // $log.debug(storageId, id);
+      $log.debug(storageId, id);
       if (id != storageId) {
         mv.shows[id].expand = true;
         mv.shows[storageId].expand = false;
@@ -54,9 +55,14 @@ export class ChannelController {
       }
     }
 
-    function inRange(id) {
+    function showsInRange(id) {
       if (id > (storageId + 2) || id < (storageId - 2))
         return true;
+    }
+
+    function openModal(id) {
+      $log.debug('modal', modal);
+      //angular.element(document.querySelector('#asdfasdf')).modal();
     }
 
   }

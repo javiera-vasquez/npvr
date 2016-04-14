@@ -1,22 +1,34 @@
-export function slider($animateCss) {
+export function slideAnimation($log) {
   'ngInject'
 
   return {
-    // make note that other events (like addClass/removeClass)
-    // have different function input parameters
-    enter: function(element, doneFn) {
-      jQuery(element).fadeIn(1000, doneFn);
-
-      // remember to call doneFn so that angular
-      // knows that the animation has concluded
+    enter: function(element, done) {
+      $log.debug('enter')
+      let animationName = 'slideInLeft'
+      let animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      element.addClass('animated ' + animationName).one(animationEnd, () => {
+        element.removeClass('animated ' + animationName);
+        done();
+      });
     },
-
-    move: function(element, doneFn) {
-      jQuery(element).fadeIn(1000, doneFn);
+    move: function(element, done) {
+      $log.debug('move')
+      let animationName = 'bounceIn'
+      let animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      element.addClass('animated ' + animationName).one(animationEnd, () => {
+        element.removeClass('animated ' + animationName);
+        done();
+      });
     },
-
-    leave: function(element, doneFn) {
-      jQuery(element).fadeOut(1000, doneFn);
+    leave: function(element, done) {
+      $log.debug('leave')
+      let animationName = 'slideOutRight'
+      let animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      element.addClass('animated ' + animationName).one(animationEnd, () => {
+        element.removeClass('animated ' + animationName);
+        done();
+      });
     }
   }
+
 }

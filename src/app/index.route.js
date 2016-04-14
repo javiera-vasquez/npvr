@@ -25,9 +25,19 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/detail/:id',
       views: {
         'detail@home.channel': {
-          template: '<h1>expand show of detail</h1>',
-          controller: function(){console.log('show detail')},
-          controllerAs: 'detail'
+          template: 'app/channel/show.html',
+          controller: 'ShowDetailController',
+          controllerAs: 'showDetail'
+        }
+      }
+    })
+
+    .state('home.channel.rec', {
+      url: '/rec/:id',
+      views: {
+        'detail@home.channel': {
+          template: '<h1>rec</h1>',
+          controller: function() { console.log('show detail') },
         }
       }
     })
@@ -59,13 +69,16 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('home.search', {
-      url: '/search',
-      views: {
-        'contentView': {
-          template: '<h1>Buscar<h1>'
-        }
-      }
+    .state('player', {
+      url: '/player',
+      template: '<h1>video en auto play</h1>',
+      controller: function() { console.log('mira este video!') }
+    })
+
+    .state('vod', {
+      url: '/old-vod/:type',
+      template: '<h1>estamos en vod</h1>',
+      controller: function() { console.log('mira que feo') }
     })
 
   $urlRouterProvider.otherwise('/channel/64');
