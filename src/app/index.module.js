@@ -18,7 +18,7 @@ import { daysWeek } from '../app/channel/daysWeek.directive';
 import { slideAnimation } from '../app/channel/slider.animation';
 
 // Import module
-angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr'])
+angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr', 'ui.bootstrap'])
   .constant('appConfig', appConfig)
   // Config and runtime of the app
   .config(config)

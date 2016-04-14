@@ -1,6 +1,6 @@
 export class ChannelController {
 
-  constructor($log, $state, $scope, theMovieDB, channelService, appConfig) {
+  constructor($log, $state, $scope, $uibModal, theMovieDB, channelService, appConfig) {
     'ngInject'
 
     // ctrl config
@@ -61,7 +61,7 @@ export class ChannelController {
     }
 
     function openModal(id) {
-      $log.debug('modal', modal);
+      $log.debug('modal', $uibModal);
       //angular.element(document.querySelector('#asdfasdf')).modal();
     }
 
