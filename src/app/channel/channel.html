@@ -25,7 +25,7 @@
             date="show.time_line.hour_start"></h4>
           <h3>{{ show.time_line.hour_start | date : 'h:mm'}} A {{ show.time_line.hour_end | date : 'h:mm'}} hrs</h3>
         </div>
-        <div class="tumb">
+        <div class="tumb animated fadeIn">
           <img
             class="poster"
             ng-click="channel.expandShow($index)"
@@ -49,8 +49,8 @@
               ng-class="{ 'active': {{ !show.time_line.is_live }} }">
               <a>{{ 'Ver Más Episodios' | uppercase }}</a>
             </li>
-            <li ng-click="channel.openModal('rec', show.id)"><a>{{ 'Grabar' | uppercase }}</a></li>
-            <li ng-click="channel.openModal('info', show.id)"><a>{{ 'Más Info' | uppercase }}</a></li>
+            <li ng-click="channel.openModal('rec', show)"><a>{{ 'Grabar' | uppercase }}</a></li>
+            <li ng-click="channel.openModal('info', show)"><a>{{ 'Más Info' | uppercase }}</a></li>
           </ul>
         </div>
       </div>

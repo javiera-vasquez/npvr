@@ -1,21 +1,26 @@
 export class MainController {
 
-  constructor($log, $state, $scope, appConfig, theMovieDB, channelService) {
+  constructor($log, $state, $rootScope, appService, tmdbService, channelService) {
     'ngInject'
 
     let showId;
     let mv = this;
-    let api = appConfig();
+    let app = appService();
 
     mv.show = {};
     mv.apiParams = {};
-    mv.menus = api.menus;
+    mv.channel = app.channels;
+    mv.menus = app.menus;
 
-    theMovieDB.setParams({
-      api_key: api.key,
+    tmdbService.setParams({
+      api_key: app.tmdb_api_key,
       language: 'es',
       with_networks: $state.params.network
     });
+
+    // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
+    //   $log.debug('asdfafs')
+    // });
 
     activate();
 
@@ -37,13 +42,13 @@ export class MainController {
     }
 
     function getConfig() {
-      return theMovieDB.getConfig(0).then((config) => {
+      return tmdbService.getConfig(0).then((config) => {
         mv.apiParams = config;
       });
     }
 
     function getShows() {
-      return theMovieDB.getSeries(0)
+      return tmdbService.getSeries(0)
         .then((shows) => {
           // Init values for the loop
           let id = 1;
@@ -70,7 +75,7 @@ export class MainController {
               path: shows.results[index].poster_path,
               overview: shows.results[index].overview
             };
-            if(show.time_line.is_live === true) {
+            if (show.time_line.is_live === true) {
               showId = show.imdb_id;
             };
             // push the program
@@ -88,7 +93,7 @@ export class MainController {
     }
 
     function getShow() {
-      return theMovieDB.getShow(showId, 0).then((show) => {
+      return tmdbService.getShow(showId, 0).then((show) => {
         mv.show = show;
       });
     }

@@ -25,6 +25,9 @@
                 <span class="glyphicon glyphicon-search"></span>
               </a>
             </li>
+            <li ui-sref-active="active">
+              <a ui-sref="home.channel">{{ main.channel[0] | uppercase }}</a>
+            </li>
             <li ng-repeat="menu in main.menus" ui-sref-active="active">
               <a ui-sref="home.{{ menu.route }}">{{ menu.channel | uppercase }}</a>
             </li>
