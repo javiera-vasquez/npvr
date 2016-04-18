@@ -5,11 +5,13 @@ import { runBlock } from './index.run';
 // Controllers
 import { MainController } from './main/main.controller';
 import { ChannelController } from './channel/channel.controller';
-import { ShowDetailController } from './channel/show.detail.controller';
+import { showController } from './modals/show.controller';
 // Services
-import { appConfig } from '../app/services/appConfig.constant';
-import { theMovieDB } from '../app/services/theMovieDB.service';
+import { appService } from '../app/services/app.constant';
+import { userService } from '../app/services/user.constant';
+import { tmdbService } from '../app/services/tmdb.service';
 import { channelService } from '../app/services/channel.service';
+import { recordingListService } from '../app/services/recordingList.service';
 // Directives
 import { windowHeight } from '../app/components/windowHeight.directive';
 import { bodyBackground } from '../app/components/bodyBackground.directive';
@@ -18,15 +20,24 @@ import { daysWeek } from '../app/channel/daysWeek.directive';
 import { slideAnimation } from '../app/channel/slider.animation';
 
 // Import module
-angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 'toastr', 'ui.bootstrap'])
-  .constant('appConfig', appConfig)
+angular.module('npvr', [
+  'ngAnimate',
+  'ngSanitize',
+  'ngMessages',
+  'ui.router',
+  'toastr',
+  'ui.bootstrap'
+  ])
+  .constant('appService', appService)
+  .constant('userService', userService)
   // Config and runtime of the app
   .config(config)
   .config(routerConfig)
   .run(runBlock)
   // Services
-  .factory('theMovieDB', theMovieDB)
+  .factory('tmdbService', tmdbService)
   .factory('channelService', channelService)
+  .factory('recordingListService', recordingListService)
   // Directives
   .directive('windowHeight', windowHeight)
   .directive('bodyBackground', bodyBackground)
@@ -34,7 +45,7 @@ angular.module('npvr', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ui.router', 't
   // Controllers
   .controller('MainController', MainController)
   .controller('ChannelController', ChannelController)
-  .controller('ShowDetailController', ShowDetailController)
+  .controller('showController', showController)
   // Animations
   //.animation('.slider-animation', slideAnimation)
 

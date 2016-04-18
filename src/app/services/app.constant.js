@@ -1,14 +1,10 @@
-export function appConfig() {
+export function appService() {
   'ngInject';
 
   var service = {
-    channel: 'discovery',
-    key: '25a2fd3a417ec4ca1d05c83fdb354704',
-    menus: [
-      {
-        channel: 'Fox+',
-        route: 'channel'
-      }, {
+    tmdb_api_key: '25a2fd3a417ec4ca1d05c83fdb354704',
+    channels: ['Fox+', 'Discovery Channel', 'AMC', 'HBO'],
+    menus: [{
         channel: 'Mis grabaciones',
         route: 'record'
       }, {

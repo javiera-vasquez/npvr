@@ -1,4 +1,4 @@
-export function theMovieDB($http, $q, $log, $timeout) {
+export function tmdbService($http, $q, $log, $timeout) {
   'ngInject'
 
   let _path;
