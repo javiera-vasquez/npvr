@@ -1,0 +1,35 @@
+.modal-content {
+  box-shadow: 0 0 30px rgba($white, 0.5);
+  h2, h3 {
+    margin: 0;
+    color: rgba($white, 1);
+  }
+  .modal-header {
+    padding-bottom: 15px;
+    border-color: rgba($white, .5);
+    h2 {font-size: 24px;}
+  }
+  .flex {
+    display: flex;
+    flex-direction: row;
+    min-height: 400px;
+    padding-top: 30px;
+  }
+  .flex-width-33 {
+    width: 205px;
+  }
+  .flex-width-66 {
+    width: 530px;
+  }
+}
+
+.flex.ng-enter {
+  opacity: 0;
+  animation: fadeIn;
+  animation-duration: .5s;
+}
+
+/* The finishing CSS styles for the enter animation */
+.flex.ng-enter.ng-enter-active {
+  opacity:1;
+}
