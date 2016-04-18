@@ -21,27 +21,6 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('home.channel.detail', {
-      url: '/detail/:id',
-      views: {
-        'detail@home.channel': {
-          template: 'app/channel/show.html',
-          controller: 'ShowDetailController',
-          controllerAs: 'showDetail'
-        }
-      }
-    })
-
-    .state('home.channel.rec', {
-      url: '/rec/:id',
-      views: {
-        'detail@home.channel': {
-          template: '<h1>rec</h1>',
-          controller: function() { console.log('show detail') },
-        }
-      }
-    })
-
     .state('home.record', {
       url: '/record',
       views: {

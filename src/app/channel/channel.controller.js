@@ -1,11 +1,10 @@
 export class ChannelController {
 
-  constructor($log, $state, $scope, $uibModal, theMovieDB, channelService, appConfig) {
+  constructor($log, $state, $uibModal, theMovieDB, channelService) {
     'ngInject'
 
     // ctrl config
     let mv = this;
-    let api = appConfig();
     let storageId;
 
     mv.shows = [];
@@ -30,11 +29,10 @@ export class ChannelController {
       return channelService.getShows(_.random(1000, 2000))
         .then((shows) => {
           angular.forEach(shows, (show, index) => {
+            show.expand = false;
             if (show.time_line.is_live) {
               show.expand = true;
               storageId = index;
-            } else {
-              show.expand = false;
             }
           })
           mv.shows = shows;
@@ -47,7 +45,7 @@ export class ChannelController {
     }
 
     function expandShow(id) {
-      $log.debug(storageId, id);
+      // $log.debug(storageId, id);
       if (id != storageId) {
         mv.shows[id].expand = true;
         mv.shows[storageId].expand = false;
@@ -56,13 +54,32 @@ export class ChannelController {
     }
 
     function showsInRange(id) {
-      if (id > (storageId + 2) || id < (storageId - 2))
-        return true;
+      return _.inRange(id, (storageId - 2), (storageId + 3));
     }
 
-    function openModal(id) {
-      $log.debug('modal', $uibModal);
-      //angular.element(document.querySelector('#asdfasdf')).modal();
+    function openModal(type, id) {
+      //$log.debug('modal', $uibModal);
+
+      let modalInstance = $uibModal.open({
+        animation: true,
+        template: '<h1> modal content </h1>',
+        controller: ($uibModalInstance, shows) => {
+          $log.info('modal controller', $uibModalInstance, shows);
+        },
+        size: 'md',
+        resolve: {
+          shows: () => {
+            return mv.shows;
+          }
+        }
+      });
+        
+      modalInstance.result.then(() => {
+        $log.info('modal open');
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+
     }
 
   }

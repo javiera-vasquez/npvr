@@ -1,6 +1,6 @@
 
 // dev bg func() for carrousel
-$bg-dev: true;
+$bg-dev: false;
 
 @mixin background-dev($n) {
   @if $bg-dev == true {
@@ -36,7 +36,7 @@ $bg-dev: true;
   height: 340px;
   width: 1280px;
   position: absolute;
-  //overflow-y: hidden;
+  overflow-y: hidden;
   //overflow-x: hidden;
   @include background-dev(0.1);
   h4, h3 {
@@ -58,7 +58,10 @@ $bg-dev: true;
 
 #carrousel .slider-animation {
   //animation-duration: 3s;
+  &:first-child { opacity: .75;}
+  &:last-child { opacity: .75;}  
   .program {
+    opacity: .75;
     h3 {color: rgba($white, .8);}
     h4 {
       margin-bottom: 5px;
@@ -73,6 +76,7 @@ $bg-dev: true;
     flex-wrap: wrap;
     height: 345px;
     width: 600px;
+    opacity: 1;
     animation: fadeIn 1s;
     @include background-dev(0.2);
     .time {
@@ -116,7 +120,6 @@ $bg-dev: true;
     width: 182px;
     height: 275px;
     padding-left: 17px;
-    opacity: .75;
     @include background-dev(0.1);
     h3 {font-size: 18px;}
     h4 {font-size: 14px;}
@@ -127,4 +130,3 @@ $bg-dev: true;
     }
   }
 }
-

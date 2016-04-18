@@ -15,7 +15,7 @@
     <div
       class="slider-animation"
       ng-repeat="show in channel.shows track by show.id"
-      ng-if="!channel.showsInRange($index)">
+      ng-if="channel.showsInRange($index)">
 
       <div class="program" ng-class="show.expand ? 'detail' : 'compact'">
         <div class="time">
@@ -49,8 +49,8 @@
               ng-class="{ 'active': {{ !show.time_line.is_live }} }">
               <a>{{ 'Ver Más Episodios' | uppercase }}</a>
             </li>
-            <li ui-sref="home.channel.rec({detail:show.id})"><a>{{ 'Grabar' | uppercase }}</a></li>
-            <li ng-click="channel.openModal(show.id)"><a>{{ 'Más Info' | uppercase }}</a></li>
+            <li ng-click="channel.openModal('rec', show.id)"><a>{{ 'Grabar' | uppercase }}</a></li>
+            <li ng-click="channel.openModal('info', show.id)"><a>{{ 'Más Info' | uppercase }}</a></li>
           </ul>
         </div>
       </div>
@@ -63,22 +63,3 @@
   <p class="pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Más Programas</p>
   <p class="pull-right">Más Programas <span class="glyphicon glyphicon-chevron-right"></span></p>
 </div>
-
-<div id="asdfasdf" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-        <div ui-view="detail"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
