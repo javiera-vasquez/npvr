@@ -1,0 +1,35 @@
+<div id="show-detail" class="modal-body">
+
+  <div class="modal-header clearfix">
+    <h2 class="pull-left">INFORMACIÓN DE SERIE</h2>
+    <img class="tip pull-right" src="../../assets/images/navigation.png">
+    <img class="tip pull-right" src="../../assets/images/back.png">
+  </div>
+
+  <div class="modal-container">
+    <div ng-if="modal.loading" class="spinner-box">
+      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+      </svg>
+      <h2>CARGANDO</h2>
+    </div>
+    <div ng-if="!modal.loading" class="flex">
+      <div class="flex-left flex-width-33">
+        <img class="poster" ng-src="{{ modal.apiParams.images.base_url }}{{ modal.apiParams.images.poster_sizes[2] }}{{ modal.show.poster_path }}">
+      </div>
+      <div class="left-left flex-width-66">
+        <h3>{{ modal.show.name }} </h3>
+        <ul class="list-unstyled">
+          <li><em>Género:</em>{{ modal.show.genres[0].name }}</li>
+          <li><em>Duración:</em>{{ modal.show.episode_run_time[0] }}</li>
+          <li><em>Idioma:</em>{{ modal.show.languages[0] }}</li>
+          <li><em>Año:</em>{{ modal.show.first_air_date | date : 'yyyy'}}</li>
+          <li><em>Temporadas:</em>{{ modal.show.number_of_seasons }}</li>
+          <li><em>Episodios:</em>{{ modal.show.number_of_episodes }}</li>
+        </ul>
+        <p>{{ modal.show.overview | limitTo : 250 }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
