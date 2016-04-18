@@ -1,6 +1,6 @@
 export class ChannelController {
 
-  constructor($log, $state, $uibModal, theMovieDB, channelService) {
+  constructor($log, $state, $scope, $uibModal, channelService) {
     'ngInject'
 
     // ctrl config
@@ -21,7 +21,7 @@ export class ChannelController {
 
     function activate() {
       return getShows().then(() => {
-        $log.debug('load shows');
+        $log.debug('load shows', $scope.$parent.main.apiParams);
       });
     }
 
@@ -31,8 +31,8 @@ export class ChannelController {
           angular.forEach(shows, (show, index) => {
             show.expand = false;
             if (show.time_line.is_live) {
-              show.expand = true;
               storageId = index;
+              show.expand = true;
             }
           })
           mv.shows = shows;
@@ -46,7 +46,7 @@ export class ChannelController {
 
     function expandShow(id) {
       // $log.debug(storageId, id);
-      if (id != storageId) {
+      if (id !== storageId) {
         mv.shows[id].expand = true;
         mv.shows[storageId].expand = false;
         storageId = id;
@@ -57,23 +57,23 @@ export class ChannelController {
       return _.inRange(id, (storageId - 2), (storageId + 3));
     }
 
-    function openModal(type, id) {
+    function openModal(type, show) {
       //$log.debug('modal', $uibModal);
+      let url = (type == 'info') ? 'app/modals/show-detail.html' : 'app/modals/show-rec.html';
+      let controller = (type == 'info') ? 'showController' : 'showController';
 
       let modalInstance = $uibModal.open({
         animation: true,
-        template: '<h1> modal content </h1>',
-        controller: ($uibModalInstance, shows) => {
-          $log.info('modal controller', $uibModalInstance, shows);
-        },
-        size: 'md',
+        templateUrl: url,
+        controller: controller,
+        controllerAs: 'modal',
+        size: 'lg',
         resolve: {
-          shows: () => {
-            return mv.shows;
-          }
+          show: () => {return show;},
+          params: () => {return $scope.$parent.main.apiParams;}
         }
       });
-        
+
       modalInstance.result.then(() => {
         $log.info('modal open');
       }, function () {
