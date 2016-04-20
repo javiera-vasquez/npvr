@@ -3,11 +3,10 @@
   <p class="pull-right" ng-click="previusShow"><span class="glyphicon glyphicon-chevron-right"></span></p>
 </div>
 
-<div ng-hide="!channel.loading" class="spinner-box">
-  <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-  </svg>
-  <h3>CARGANDO</h3>
+<div
+  ng-include="'../app/components/spinner.template.html'"
+  ng-hide="!channel.loading"
+  class="spinner-box">
 </div>
 
 <div id="carrousel">
@@ -35,7 +34,7 @@
         <div class="content" ng-if="show.expand">
           <div class="episode">
             <h2>{{ show.name }}</h2>
-            <h4>Temp 01 Eps 01</h4>
+            <h4>Temporada {{ show.season }} Episodio {{ show.episode }}</h4>
           </div>
           <ul class="navigation inner-menu">
             <li

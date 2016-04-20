@@ -1,4 +1,4 @@
-export class showController {
+export class showDetailController {
   constructor($log, show, params, tmdbService, appService) {
     'ngInject'
 
@@ -8,6 +8,7 @@ export class showController {
     mv.show = {};
     mv.apiParams = params;
     mv.loading = true;
+    mv.title = 'Información de la serie'
 
     tmdbService.setParams({
       api_key: app.tmdb_api_key,
@@ -19,7 +20,7 @@ export class showController {
     activate();
 
     function activate() {
-      return getShow(show.imdb_id, 0).then(() => {
+      return getShow(show.imdb_id, 1000).then(() => {
         $log.debug('show detail loaded');
       });
     }

@@ -70,6 +70,8 @@ export class MainController {
               id: id,
               imdb_id: shows.results[index].id,
               catchup: (minutes > 0) ? true : false,
+              episode: _.random(1, 13),
+              season: _.random(1,3),
               time_line: setTime(time.now, time.date_stamp, time.lapsus[minutes]),
               name: shows.results[index].name,
               path: shows.results[index].poster_path,

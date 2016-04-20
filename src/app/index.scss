@@ -1,8 +1,9 @@
 @import 'variables';
 @import 'fonts';
 @import 'carrousel';
-@import 'spinner';
 @import 'modals/modal';
+@import 'components/spinner';
+
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -47,6 +48,21 @@ body {
   animation-duration: 2s;
   filter: sepia(25%) grayscale(25%);
 }
+
+// labels for ratings
+.label {
+  top:-3px;
+  left: 10px;
+  position: relative;
+  color: $white;
+  font-weight: normal;
+  padding: 4px 8px 2px;
+  font-size: 14px;
+  line-height: 12px;
+  border: 3px solid $white;
+  border-radius: 50px;
+}
+
 
 // Header => move to directive when is ready
 .header {

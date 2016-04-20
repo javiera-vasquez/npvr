@@ -5,7 +5,8 @@ import { runBlock } from './index.run';
 // Controllers
 import { MainController } from './main/main.controller';
 import { ChannelController } from './channel/channel.controller';
-import { showController } from './modals/show.controller';
+import { showDetailController } from './modals/show-detail/showDetail.controller';
+import { showRecordController } from './modals/show-recording/showRecord.controller';
 // Services
 import { appService } from '../app/services/app.constant';
 import { userService } from '../app/services/user.constant';
@@ -45,7 +46,8 @@ angular.module('npvr', [
   // Controllers
   .controller('MainController', MainController)
   .controller('ChannelController', ChannelController)
-  .controller('showController', showController)
+  .controller('showDetailController', showDetailController)
+  .controller('showRecordController', showRecordController)
   // Animations
   //.animation('.slider-animation', slideAnimation)
 

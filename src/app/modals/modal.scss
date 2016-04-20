@@ -1,35 +1,113 @@
 .modal-content {
+  border-radius: 0;
   box-shadow: 0 0 30px rgba($white, 0.5);
-  h2, h3 {
+  h3, h4 {
     margin: 0;
     color: rgba($white, 1);
   }
   .modal-header {
     padding-bottom: 15px;
     border-color: rgba($white, .5);
-    h2 {font-size: 24px;}
+    h3 {font-size: 24px;}
+  }
+}
+
+.modal-container {
+  color: $white;
+  transition: width 500ms ease-in-out, height 500ms ease-in-out;
+  .spinner-box {
+    height: 350px;
+    transform: scale(.8);
+    h3 {
+      padding-top: 15px;
+      color: rgba($white, .5);
+    }
   }
   .flex {
     display: flex;
     flex-direction: row;
-    min-height: 400px;
+    flex-wrap: wrap;
+    min-height: 350px;
     padding-top: 30px;
   }
-  .flex-width-33 {
-    width: 205px;
+  .flex-width-33 { width: 210px; }
+  .flex-width-66 { width: 520px; }
+  .flex-width-40 { width: 275px; }
+  .flex-width-60 {
+    width: 450px;
+    height: 210px;
+    position: relative;
   }
-  .flex-width-66 {
-    width: 530px;
+  .flex-width-100 { width: 100% }
+  h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
+  .list-unstyled {
+    font-size: 16px;
+    margin-bottom: 20px;
+    em {
+      width: 120px;
+      display: inline-block;
+      font-style: normal;
+      color: rgba($white, .5);
+    }
+  }
+  .overview {
+    font-size: 16px;
+  }
+  .navigation.inner-menu li {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .progress-bar-container {
+    height: 40px;
+    margin-bottom: 0;
+    padding-top: 20px;
+    .glyphicon {
+      width: 26px;
+      height: 26px;
+      margin-right: 20px;
+      font-size: 26px;
+      line-height: 26px;
+    }
+    .progress {
+      height: 30px;
+      width: 670px;
+      margin-bottom: 0;
+      background-color: rgba($white, .25);
+    }
+    .progress-bar {line-height: 30px;}
+    .progress-bar-info {background-color: rgba($white, .5);}
+    .progress-bar-warning {background-color: $brand-primary;}
+    .progress-bar-danger {background-color: $brand-danger;}
+  }
+}
+
+.modal-recording-info {
+    .thumb {
+      width: 135px;
+    }
+    .content {
+      width: 300px;
+      padding-left: 20px;
+      .out-of-space {
+        font-size: 22px;
+        color: $brand-danger
+      }
+      .time {
+        bottom: 0;
+        position: absolute;
+        font-size: 16px;
+        color: rgba($white, .75);
+        strong {color: rgba($white, 1);}
+      }
+      p {color: rgba($white, .75);}
+    }
 }
 
 .flex.ng-enter {
   opacity: 0;
   animation: fadeIn;
   animation-duration: .5s;
-}
-
-/* The finishing CSS styles for the enter animation */
-.flex.ng-enter.ng-enter-active {
-  opacity:1;
 }

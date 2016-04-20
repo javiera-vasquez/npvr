@@ -59,8 +59,8 @@ export class ChannelController {
 
     function openModal(type, show) {
       //$log.debug('modal', $uibModal);
-      let url = (type == 'info') ? 'app/modals/show-detail.html' : 'app/modals/show-rec.html';
-      let controller = (type == 'info') ? 'showController' : 'showController';
+      let url = (type == 'info') ? 'app/modals/show-detail/show.detail.html' : 'app/modals/show-recording/show.recording.html';
+      let controller = (type == 'info') ? 'showDetailController' : 'showRecordController';
 
       let modalInstance = $uibModal.open({
         animation: true,
