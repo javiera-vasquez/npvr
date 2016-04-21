@@ -1,7 +1,6 @@
 export function appService() {
   'ngInject';
-
-  var service = {
+  return  {
     tmdb_api_key: '25a2fd3a417ec4ca1d05c83fdb354704',
     channels: ['Fox+', 'Discovery Channel', 'AMC', 'HBO'],
     menus: [{
@@ -16,6 +15,4 @@ export function appService() {
       }
     ]
   }
-
-  return service;
 }
