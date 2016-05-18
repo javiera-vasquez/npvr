@@ -1,0 +1,34 @@
+<div id="show-detail" class="modal-body">
+
+  <div class="modal-header clearfix">
+    <h3 class="pull-left">{{ modal.title | uppercase }}</h3>
+    <img class="tip pull-right" src="../../assets/images/back.png">
+  </div>
+
+  <div class="modal-container">
+    <div
+      ng-if="modal.loading"
+      ng-include="'../app/components/spinner.template.html'"
+      class="spinner-box">
+    </div>
+
+    <div ng-if="!modal.loading" class="flex">
+      <div class="flex-left flex-width-33">
+        <img class="poster" ng-src="{{ modal.apiParams.images.base_url }}{{ modal.apiParams.images.poster_sizes[2] }}{{ modal.show.poster_path }}">
+      </div>
+      <div class="left-left flex-width-66">
+        <h4>{{ modal.show.name }} <span class="label ratings">PG</span></h4>
+        <ul class="list-unstyled">
+          <li><em>Género:</em>{{ modal.show.genres[0].name }}</li>
+          <li><em>Duración:</em>{{ modal.show.episode_run_time[0] }}</li>
+          <li><em>Idioma:</em>{{ modal.show.languages[0] }}</li>
+          <li><em>Año:</em>{{ modal.show.first_air_date | date : 'yyyy'}}</li>
+          <li><em>Temporadas:</em>{{ modal.show.number_of_seasons }}</li>
+          <li><em>Episodios:</em>{{ modal.show.number_of_episodes }}</li>
+        </ul>
+        <p class="overview">{{ modal.show.overview | limitTo : 350 }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

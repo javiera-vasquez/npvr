@@ -1,0 +1,56 @@
+<div class="flex-width-40">
+  <ul class="navigation inner-menu">
+    <li ng-click="modal.setRecord('episode')"><a>EPISODIO</a></li>
+    <li ng-click="modal.setRecord('new')"><a>EPISODIOS ESTRENO</a></li>
+    <li ng-click="modal.setRecord('last')"><a>ÚLTIMOS 5 EPS</a></li>
+    <li ng-click="modal.setRecord('all')"><a>TODA LA SERIE</a></li>
+  </ul>
+</div>
+
+<div class="flex-width-60 clearfix modal-recording-info">
+  <div class="thumb pull-left">
+    <img
+      class="poster img-responsive"
+      ng-src="{{ modal.apiParams.images.base_url }}{{ modal.apiParams.images.poster_sizes[2] }}{{ modal.show.path }}"
+    >
+  </div>
+  <div class="content pull-left">
+    <h4 class="title">{{ modal.show.name }} <span class="label ratings">PG</span></h4>
+    <p
+      class="overview"
+      ng-if="!modal.outOfSpace">
+      {{ modal.show.overview | limitTo : 100 }}
+    </p>
+    <h4
+      class="out-of-space blue"
+      ng-if="modal.outOfSpace"
+      ng-click="modal.buySpace()">
+      ¿Necesitas más espacio? Presiona <strong>OK</strong> para comprar
+    </h4>
+    <h5 class="time">
+      <strong>{{ modal.recodingCost }}</strong>
+      {{ (modal.recodingCost > 1) ? 'hrs' : 'hr' }} en la nube
+    </h5>
+  </div>
+</div>
+
+<div class="flex-width-100 progress-bar-container">
+  <div class="clearfix">
+    <span class="glyphicon glyphicon-cloud-upload pull-left"></span>
+    <uib-progressbar
+      class="pull-left"
+      value="modal.user.consumeSpace"
+      max="modal.user.totalSpace"
+      type="info">
+      <span
+        ng-if="modal.user.consumeSpace > 0" >
+        Uso {{ modal.user.consumeSpace }} {{ (modal.user.consumeSpace > 1) ? 'hrs' : 'hr' }}
+      </span>
+    </uib-progressbar>
+    <h4
+      ng-if="modal.outOfSpace"
+      class="out-of-space red pull-right">
+      NO TIENES ESPACIO SUFICIENTE
+    </h4>
+  </div>
+</div>
