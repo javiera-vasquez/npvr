@@ -16,13 +16,15 @@ export function channelService($log, $q, $timeout) {
     $timeout(() => {
       //$log.debug('get b', shows);
       defered.resolve(shows);
-    }, delay)
+    }, delay);
     return defered.promise;
   }
 
   function setShows(series) {
-    //$log.debug('set', series);
-    return shows = series;
+    return series.then((list) => {
+      $log.debug('set asdklfjaklsdjflaksdjf akldsfjalksdjfl kljadsflkjad', list);
+      return shows = list;
+    });
   }
 
 }

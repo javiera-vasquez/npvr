@@ -9,10 +9,10 @@ import { showDetailController } from './modals/show-detail/showDetail.controller
 import { showRecordController } from './modals/show-recording/showRecord.controller';
 // Services
 import { appService } from '../app/services/app.constant';
-import { userService } from '../app/services/user.constant';
+import { userService } from '../app/services/user.service';
 import { tmdbService } from '../app/services/tmdb.service';
 import { channelService } from '../app/services/channel.service';
-import { recordingListService } from '../app/services/recordingList.service';
+import { recordingService } from '../app/services/recordingService.service';
 // Directives
 import { windowHeight } from '../app/components/windowHeight.directive';
 import { bodyBackground } from '../app/components/bodyBackground.directive';
@@ -30,7 +30,6 @@ angular.module('npvr', [
   'ui.bootstrap'
   ])
   .constant('appService', appService)
-  .constant('userService', userService)
   // Config and runtime of the app
   .config(config)
   .config(routerConfig)
@@ -38,7 +37,8 @@ angular.module('npvr', [
   // Services
   .factory('tmdbService', tmdbService)
   .factory('channelService', channelService)
-  .factory('recordingListService', recordingListService)
+  .factory('recordingService', recordingService)
+  .factory('userService', userService)
   // Directives
   .directive('windowHeight', windowHeight)
   .directive('bodyBackground', bodyBackground)

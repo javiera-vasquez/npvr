@@ -21,13 +21,14 @@ export class ChannelController {
 
     function activate() {
       return getShows().then(() => {
-        $log.debug('load shows', $scope.$parent.main.apiParams);
+        //$log.debug('load shows', $scope.$parent.main.apiParams);
       });
     }
 
     function getShows() {
       return channelService.getShows(_.random(1000, 2000))
         .then((shows) => {
+          $log.debug('que chucha estoy resolviendo entonces?', shows);
           angular.forEach(shows, (show, index) => {
             show.expand = false;
             if (show.time_line.is_live) {
@@ -59,7 +60,7 @@ export class ChannelController {
 
     function openModal(type, show) {
       //$log.debug('modal', $uibModal);
-      let url = (type == 'info') ? 'app/modals/show-detail/show.detail.html' : 'app/modals/show-recording/show.recording.html';
+      let url = (type == 'info') ? 'app/modals/show-detail/show_detail.html' : 'app/modals/show-recording/show_recording.html';
       let controller = (type == 'info') ? 'showDetailController' : 'showRecordController';
 
       let modalInstance = $uibModal.open({

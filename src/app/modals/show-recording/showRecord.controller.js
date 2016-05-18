@@ -4,22 +4,24 @@ export class showRecordController {
 
     let mv = this;
     let delay = 0;
+    let recordingCost = [1, 3, 5, 10];
+    let types = ['episode', 'new', 'last', 'all'];
     let recordStages = ['confirm-recording', 'success-recording'];
     let purchaseStages = ['purchase-space', 'validate-password', 'success-purchase'];
 
     // services
     mv.show = show;
     mv.apiParams = params;
-    mv.user = userService();
+    mv.user = userService;
     // view params
     mv.title = 'Grabar';
     mv.loading = true;
-    mv.stage = undefined;
     mv.outOfSpace = false;
+    mv.stage = undefined;
     mv.setRecord = setRecord;
+    mv.buySpace = buySpace;
     // user space calc
     mv.recodingCost = 0;
-    mv.diskSpace = [];
 
     activate();
 
@@ -29,40 +31,28 @@ export class showRecordController {
       });
     }
 
+    function setTitle(type) {
+      var title = {
 
-    // 1.- Define two paths => record a program || purchase space
-    // 2.- Set path to null push default view
-    // 3.- If not possible record then path =
-    //
+      }
+      return (title.hasOwnProperty(type)) ?  title[type] : 'Grabar';
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    function setRecord(type, user) {
-      let cost = [1, 3, 5, 10];
-      let types = ['episode', 'new', 'last', 'all'];
+    // stages controls
+    function setRecord(type) {
       let index = types.indexOf(type);
-      if(!outOfSpace(user, cost[index]) && index !== -1) {
+      if(!outOfSpace(mv.user, recordingCost[index]) && index !== -1) {
         setStage(mv.stage, recordStages[0]);
       } else {
-        mv.title = 'asdf';
-        setStage(mv.stage, purchaseStages[0]);
+        mv.outOfSpace = true;
       }
     }
 
-    function confirmRecord() {
-
+    function buySpace() {
+      setStage(mv.stage, purchaseStages[0]);
     }
 
+    // helpers functions
     function setStage(oldStage, newStage) {
       $log.debug('old', oldStage, 'new',newStage);
       if(oldStage !== newStage)
@@ -70,29 +60,8 @@ export class showRecordController {
     }
 
     function outOfSpace(user, cost) {
-      return ((cost + user.consume) > user.total) ? true : false;
-    }
-
-
-
-
-    function recordingCost(type, validation, user) {
-      let cost = [1, 3, 5, 10];
-      let types = ['episode', 'new', 'last', 'all'];
-      let index = types.indexOf(type);
-
-      mv.outOfSpace = outOfSpace();
-
-      if (index !== -1) {
-        mv.recodingCost = cost[index];
-        mv.diskSpace = [{
-          value: consumeSpace,
-          type: 'info',
-        }, {
-            value: cost[index],
-            type: (outOfSpace()) ? 'danger' : 'warning',
-          }];
-      }
+      $log.debug(cost, user.consumeSpace, user.totalSpace);
+      return ((cost + user.consumeSpace) > user.totalSpace) ? true : false;
     }
 
     $log.debug('record controller loaded', mv.user);

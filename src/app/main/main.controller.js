@@ -1,6 +1,6 @@
 export class MainController {
 
-  constructor($log, $state, $rootScope, appService, tmdbService, channelService) {
+  constructor($log, $q, $state, $rootScope, appService, tmdbService, channelService) {
     'ngInject'
 
     let showId;
@@ -48,12 +48,14 @@ export class MainController {
     }
 
     function getShows() {
+      let defered = $q.defer();
       return tmdbService.getSeries(0)
         .then((shows) => {
           // Init values for the loop
           let id = 1;
           let showList = [];
           let len = shows.results.length;
+
           // Time obj
           let time = {
             now: new Date(),
@@ -88,10 +90,15 @@ export class MainController {
             time.date_stamp += time.lapsus[minutes];
             //$log.debug(show);
           }
-          channelService.setShows(showList);
+
+          return showList;
+
         }, (reason) => {
           $log.debug(reason);
-        })
+        }).then((res) => {
+          defered.resolve(res);
+          return channelService.setShows(defered.promise);
+        });
     }
 
     function getShow() {

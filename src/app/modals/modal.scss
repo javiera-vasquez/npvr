@@ -56,6 +56,14 @@
   .overview {
     font-size: 16px;
   }
+  .out-of-space.red{
+    font-size: 18px;
+    color: $brand-danger
+  }
+  .out-of-space.blue{
+    font-size: 22px;
+    color: $brand-primary;
+  }
   .navigation.inner-menu li {
     font-size: 24px;
     line-height: 30px;
@@ -72,12 +80,18 @@
       line-height: 26px;
     }
     .progress {
-      height: 30px;
-      width: 670px;
-      margin-bottom: 0;
+      height: 25px;
+      width: 690px;
+      margin-bottom: 10px;
       background-color: rgba($white, .25);
+      span {
+        margin-right: 5px;
+      }
     }
-    .progress-bar {line-height: 30px;}
+    .progress-bar {
+      line-height: 25px;
+      text-align: right;
+    }
     .progress-bar-info {background-color: rgba($white, .5);}
     .progress-bar-warning {background-color: $brand-primary;}
     .progress-bar-danger {background-color: $brand-danger;}
@@ -91,10 +105,6 @@
     .content {
       width: 300px;
       padding-left: 20px;
-      .out-of-space {
-        font-size: 22px;
-        color: $brand-danger
-      }
       .time {
         bottom: 0;
         position: absolute;
